@@ -2,6 +2,8 @@ package org.ll.review.controller;
 
 
 import lombok.extern.slf4j.Slf4j;
+import org.ll.review.common.R;
+import org.ll.review.entity.pojo.User;
 import org.ll.review.service.UserService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,11 +20,12 @@ public class UserController {
     private UserService userService;
 
     @RequestMapping("/getUserById")
-    public Object getUserById(Long id){
+    public R<?> getUserById(Long id){
 
         log.info("id = {}", id);
 
-        return userService.getUserById(id);
+        User user = userService.getUserById(id);
+        return R.success(user);
     }
 
 }

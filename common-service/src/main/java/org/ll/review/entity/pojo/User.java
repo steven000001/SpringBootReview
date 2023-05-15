@@ -2,15 +2,15 @@ package org.ll.review.entity.pojo;
 
 
 import com.baomidou.mybatisplus.annotation.TableName;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NonNull;
+import lombok.*;
 import lombok.experimental.Accessors;
 
 @Data
 @Accessors(chain = true)
 @Builder
 @TableName("user")
+@AllArgsConstructor
+@NoArgsConstructor
 public class User {
 
     //    @TableId
