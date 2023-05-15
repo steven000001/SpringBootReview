@@ -1,9 +1,8 @@
 package org.ll.review.controller;
 
+import cn.hutool.core.lang.TypeReference;
 import cn.hutool.json.JSONUtil;
 import com.baomidou.mybatisplus.test.autoconfigure.AutoConfigureMybatisPlus;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -63,11 +62,9 @@ class UserControllerTest {
         log.info("r = {}", r);
 
         log.info("r.data= {}", r.getData());
-
-        ObjectMapper objectMapper = new ObjectMapper();
-        String string = response.getContentAsString().toString();
-        R<User> rs = objectMapper.readValue(string, new TypeReference<R<User>>() {});
-        User user = rs.getData();
+        R<User> userR = JSONUtil.toBean(response.getContentAsString(), new TypeReference<R<User>>() {}, false);
+        User user = userR.getData();
         log.info("user = {}", user);
+        assertThat(user).isEqualTo(build);
     }
 }
