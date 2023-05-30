@@ -1,0 +1,4 @@
+mvc:
+  interceptor:
+    info: Hello，from_demo_start_yes....
+    show: true

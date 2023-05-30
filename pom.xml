@@ -9,6 +9,7 @@
         <module>user-service</module>
         <module>order-service</module>
         <module>common-service</module>
+        <module>show-spring-boot-starter</module>
     </modules>
     <packaging>pom</packaging>
 
